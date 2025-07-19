@@ -1,0 +1,16 @@
+JSON -> (Java Script Object Notation) eshte nje format per shkembimin e te dhenave qe perdoret gjeresisht
+per komunikimin midis klientiti (app frontend) dhe serverit (backend -java/springboot etj)
+paraqiten te dhenat ne formen celes - vlere (key-value)
+
+JPA -> Java persistance api
+eshte nje standart per ruajtjen e objekteve ne databazen relacionale
+
+Hibernate (framework) eshte implementimi i JPA
+
+@Entity -> e ben klasen tabel ne databaze
+@Id ->  celes primar
+@GeneratedValue -> gjeneron vlera automatike per id
+@Column -> percakton nje shtylle
+
+JpaRepository interface i gatshem ne java qe ka metoda te gatshme
+JpaRepository<User,Long>
