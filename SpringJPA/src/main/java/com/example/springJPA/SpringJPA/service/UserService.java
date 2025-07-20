@@ -1,11 +1,14 @@
 package com.example.springJPA.SpringJPA.service;
 
 import com.example.springJPA.SpringJPA.dto.UserDTO;
+import com.example.springJPA.SpringJPA.exceptions.UserNotFoundException;
 import com.example.springJPA.SpringJPA.model.User;
 import com.example.springJPA.SpringJPA.repository.UserRepository;
+import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,10 +31,30 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    // metoda per gjetjen e te gjithe userve
     public List<User> findAllUsers(){
         return userRepository.findAll();
     }
 
+    //metoda per gjetjen e user sipas email
+    public Optional<User> findByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
 
+    // metoda per te fshire nje perdorues nga databaza
+    public void deleteUserById(Long id){
+        if(!userRepository.existsById(id)){
+            throw new UserNotFoundException("Perdoruesi me id: " + id + " nuk u gjet");
+        }
+    }
 
+    // metoda per update e nje user
+    public User updateUser(Long id, User updatedUser){
+        return userRepository.findById(id)
+                .map(existingUser -> {
+                    existingUser.setName(updatedUser.getName());
+                    existingUser.setEmail(updatedUser.getEmail());
+                    return userRepository.save(existingUser);
+                }).orElseThrow(() -> new UserNotFoundException("Nuk ekziston"));
+    }
 }
