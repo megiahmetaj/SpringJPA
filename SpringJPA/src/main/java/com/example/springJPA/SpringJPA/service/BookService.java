@@ -26,4 +26,5 @@ public class BookService {
     public Optional<Book> getLatestBook(){
         return bookRepository.findFirstByOrderByYearPublishedDesc();
     }
+
 }
