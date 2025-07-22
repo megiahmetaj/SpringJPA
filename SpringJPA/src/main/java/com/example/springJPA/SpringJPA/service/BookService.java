@@ -27,4 +27,11 @@ public class BookService {
         return bookRepository.findFirstByOrderByYearPublishedDesc();
     }
 
+    public List<Book> getBooksPublishedAfter(int year) {
+        return bookRepository.findByYearPublishedGreaterThan(year);
+    }
+
+    public List<Book> getBooksByAuthor(String author) {
+        return bookRepository.findByAuthor(author);
+    }
 }

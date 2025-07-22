@@ -36,5 +36,15 @@ public class BookController {
         // nese ekziston nje liber(Optional eshte present) ai mbyllet brenda klases ResponseEntity
         //dhe pergjigjet me status 200:: 0k
     }
+    // /after
+    @GetMapping("/after")
+    public List<Book> getBooksAfterYear(@RequestParam int year) {
+        return bookService.getBooksPublishedAfter(year);
+    }
 
+    // /books/author
+    @GetMapping("/author")
+    public List<Book> getBooksByAuthor(@RequestParam String name) {
+        return bookService.getBooksByAuthor(name);
+    }
 }
