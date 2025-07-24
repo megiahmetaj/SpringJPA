@@ -65,4 +65,9 @@ public class UserController {
         User user = userService.updateUser(id, updatedUser);
         return ResponseEntity.ok(user);
     }
+
+    @GetMapping("/count")
+    public long countUsers() {
+        return userService.count();
+    }
 }

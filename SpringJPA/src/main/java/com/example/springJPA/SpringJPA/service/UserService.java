@@ -57,4 +57,8 @@ public class UserService {
                     return userRepository.save(existingUser);
                 }).orElseThrow(() -> new UserNotFoundException("Nuk ekziston"));
     }
+
+    public long count() {
+        return userRepository.count();
+    }
 }
