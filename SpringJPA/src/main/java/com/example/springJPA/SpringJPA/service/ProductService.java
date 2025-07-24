@@ -19,4 +19,8 @@ public class ProductService {
     public List<Product> findAll(){
         return productRepository.findAll();
     }
+
+    public List<Product> findByPriceRange(double min, double max) {
+        return productRepository.findAll();
+    }
 }

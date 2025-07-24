@@ -28,4 +28,11 @@ public class ProductController {
     public List<Product> getAllProducts(){
         return productService.findAll();
     }
+
+    @GetMapping("/price_range")
+    public List<Product> getProductsByPriceRange(
+            @RequestParam double min,
+            @RequestParam double max) {
+        return productService.findByPriceRange(min, max);
+    }
 }
